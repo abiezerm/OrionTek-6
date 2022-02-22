@@ -21,5 +21,5 @@ Proyecto para tener el control de todos los clientes pertenecientes a la empresa
 ## Instrucciones
 * En la página principal se encuentra el menú de opsiones en la parte superior, asegurate de haber creado la base de datos.
 * Menú "Crear" en el formulario para crear nuevo clientes con una sola línea en la dirección.
-* Menú "Listado" encontraremos todos los clientes creados. En este mismo formulario, podremos editar cualquier información del cliente, tomar cuenta que al editar la direción, ésta será creada como un nuevo registro ;almacenando la anterior en un estado de no activa.
+* Menú "Listado" encontraremos todos los clientes creados. En este mismo formulario, podremos editar cualquier información del cliente, tomar cuenta que al editar la direción, ésta será creada como un nuevo registro almacenando la anterior en un estado de no activa.
 * Menú "Histórico de Direcciones" aquí vamos a ver el listado de los clientes donde podremos consultar sus direcciones.
