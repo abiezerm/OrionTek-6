@@ -1,0 +1,44 @@
+﻿@model List<PresentationMVC.ViewModels.ClienteViewModel>
+
+@{
+    ViewData["Title"] = "Direcciones de clientes";
+}
+
+<div class="row">
+    <div class="col-4">
+        <label class="mb-2">Seleccione el cliente</label>
+        <select class="form-select" id="clientes" onchange="LlenarDirecciones(this.value)"
+                asp-items="@(new SelectList(Model, "Id", "Nombre"))">
+            <option>Seleccione un cliente</option>
+        </select>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col">
+        <table class="table table-hover" id="tablaDirecciones">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Dirección</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    function LlenarDirecciones(clienteId){
+        $("#tablaDirecciones").children("tbody").children("tr").remove();
+        fetch("/Direccion/Consulta?clienteId=" + clienteId).then(
+            (response) => {
+                return response.json();
+            }).then((datos) => {
+                for(var i = 0; i < datos.result.length; i++){
+                    $("#tablaDirecciones").children("tbody").append("<tr><td>" + datos.result[i].id + "</td><td>" + datos.result[i].descripcion + "</td></tr>");
+                }
+              });
+    }
+</script>
+}

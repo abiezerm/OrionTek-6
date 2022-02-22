@@ -1,0 +1,77 @@
+﻿@model List<PresentationMVC.ViewModels.ClienteViewModel>
+
+@{
+    ViewData["Title"] = "Listado de Clientes";
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td class="editarCliente" data-propertyName="Nombre" id="@item.Id">@item.Nombre</td>
+                <td class="editarCliente" data-propertyName="Apellidos" id="@item.Id">@item.Apellidos</td>
+                <td class="editarDireccion" data-propertyName="Direccion" id="@item.Id">@item.Direccion</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+<script type="text/javascript">
+    $(document).ready( function () {
+        //Inicializamos el DataTable
+        $('table').DataTable();
+
+        //Inicializamos el JEditable
+        $('.editarCliente').editable('/Cliente/Actualizar', {
+            submitdata: function () {
+                        return {
+                            PropertyName: $(this).data("propertyname")
+                        }
+                    },
+            callback: function (value, settings) {
+                        var jsonData = $.parseJSON(value);
+                        if (jsonData.status) {
+                            $(this).text(jsonData.value);
+                        }
+                        else {
+                            alert("Error al actualizar el registro.")
+                        }
+                    },
+            indicator : 'Saving…',
+            submit    : 'Editar',
+            tooltip   : 'Click para editar'
+        });
+        $('.editarDireccion').editable('/Cliente/Actualizar', {
+            submitdata: function () {
+                        return {
+                            PropertyName: $(this).data("propertyname")
+                        }
+                    },
+            callback: function (value, settings) {
+                        var jsonData = $.parseJSON(value);
+                        if (jsonData.status) {
+                            $(this).text(jsonData.value);
+                        }
+                        else {
+                            alert("Error al actualizar el registro.")
+                        }
+                    },
+            type      : 'textarea',
+            cancel    : 'Cancel',
+            submit    : 'Agregar',
+            tooltip   : 'Click para agregar'
+        });
+    });
+</script>
+}
