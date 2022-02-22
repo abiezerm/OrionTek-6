@@ -14,7 +14,7 @@ Proyecto para tener el control de todos los clientes pertenecientes a la empresa
 
 # Getting Started
 ## Requisitos
-* Debes tener instalado una instanci de SQL Server, en este caso, el sistema usa la instancia predeterminada.
+* Debes tener instalado una instancia de SQL Server, en este caso, el sistema usa la instancia predeterminada.
 * Descarga el código y ejecuta la migración
 * Ejecuta el sistema y verás la pantalla principal.
 
